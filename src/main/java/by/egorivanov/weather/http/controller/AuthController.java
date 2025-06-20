@@ -1,7 +1,6 @@
 package by.egorivanov.weather.http.controller;
 
 import by.egorivanov.weather.dto.request.UserCreateEditDto;
-import by.egorivanov.weather.mapper.UserMapper;
 import by.egorivanov.weather.service.SessionService;
 import by.egorivanov.weather.service.UserService;
 import jakarta.servlet.http.Cookie;
@@ -26,7 +25,7 @@ public class AuthController {
     private final UserService userService;
     private final SessionService sessionService;
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    private final UserMapper userMapper;
+
 
     @GetMapping("/sign-in")
     public String singInPage(Model model) {
@@ -65,6 +64,7 @@ public class AuthController {
                 redirectAttributes.addFlashAttribute("loginError", "Wrong username or password");
                 return "redirect:/sign-in-with-errors";
             }
+
 
             if (!passwordEncoder.matches(user.getPassword(), foundUser.getPassword())) {
                 redirectAttributes.addFlashAttribute("loginError", "Wrong username or password");

@@ -6,9 +6,15 @@
 </head>
 <body>
 <div th:fragment="header">
-    <form th:action="@{/logout}" method="post">
-        <button type="submit">Sign out</button>
-    </form>
+    <div class="d-flex align-items-center">
+        <span class="navbar-text me-3" th:if="${user != null}" th:text="${user.username}"></span>
+
+        <form th:action="@{/logout}" method="post" th:if="${user != null}">
+            <button type="submit" class="btn btn-outline-danger">Sign out</button>
+        </form>
+
+        <a th:href="@{/sign-in}" class="btn btn-outline-primary" th:if="${user == null}">Sign in</a>
+    </div>
 </div>
 </body>
 </html>

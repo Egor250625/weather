@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @Entity
 @ToString(exclude = "locations")
-@Table(name = "users",schema = "weather")
+@Table(name = "users", schema = "weather")
 public class Users implements BaseEntity<Integer> {
 
 
@@ -23,14 +23,12 @@ public class Users implements BaseEntity<Integer> {
     private Integer id;
 
 
-
     private String username;
 
     @Column(nullable = false)
     private String password;
 
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL,fetch = FetchType.EAGER,
-            orphanRemoval = true)
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Locations> locations = new ArrayList<>();
 }

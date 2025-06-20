@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+src/main/resources/database-secret.yml
+src/main/resources/weatherApi-secret.yml
+.idea

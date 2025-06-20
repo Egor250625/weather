@@ -1,36 +1,28 @@
 package by.egorivanov.weather.dto.response;
 
-import by.egorivanov.weather.model.common.weather.Coordinates;
-import by.egorivanov.weather.model.common.weather.Main;
-import by.egorivanov.weather.model.common.weather.Sys;
-import by.egorivanov.weather.model.common.weather.Weather;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherByNameResponseDto {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("coord")
-    private Coordinates coordinates;
+    @JsonProperty("lat")
+    private double latitude;
 
-    @JsonProperty("weather")
-    private List<Weather> weather;
+    @JsonProperty("lon")
+    private double longitude;
 
-    @JsonProperty("main")
-    private Main main;
+    @JsonProperty("country")
+    private String country;
 
-    @JsonProperty("sys")
-    private Sys sys;
+    @JsonProperty("state")
+    private String state;
 }

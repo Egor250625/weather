@@ -1,0 +1,38 @@
+server:
+  servlet:
+    session:
+      tracking-modes: cookie
+      timeout: 0
+
+spring:
+  config:
+    import:
+      - classpath:database-secret.yml
+      - classpath:weatherApi-secret.yml
+
+
+
+
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+
+    liquibase:
+      change-log: classpath:db.changelog/db.changelog-master.yaml
+      default-schema: weather
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: true
+        format_sql: true
+        hbm2ddl.auto: validate
+        ddl-auto: update
+    open-in-view: false
+
+logging:
+  level:
+    root: INFO

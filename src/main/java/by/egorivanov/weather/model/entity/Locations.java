@@ -24,6 +24,7 @@ public class Locations implements BaseEntity<Integer> {
     @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 
+
     private double  latitude;
     private double  longitude;
 }

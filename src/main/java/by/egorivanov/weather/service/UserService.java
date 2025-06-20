@@ -1,6 +1,6 @@
 package by.egorivanov.weather.service;
 
-import by.egorivanov.weather.dto.request.UserAuthDto;
+import by.egorivanov.weather.dto.response.UserAuthDto;
 import by.egorivanov.weather.dto.request.UserCreateEditDto;
 import by.egorivanov.weather.dto.response.UserReadDto;
 import by.egorivanov.weather.exception.SignUpException;

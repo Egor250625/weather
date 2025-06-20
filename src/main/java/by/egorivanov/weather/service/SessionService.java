@@ -5,6 +5,7 @@ import by.egorivanov.weather.exception.SessionException;
 import by.egorivanov.weather.mapper.SessionMapper;
 import by.egorivanov.weather.model.entity.Sessions;
 import by.egorivanov.weather.repository.SessionRepository;
+import by.egorivanov.weather.repository.UsersRepository;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +24,9 @@ import java.util.UUID;
 public class SessionService {
 
     private final SessionRepository sessionRepository;
-
     private final SessionMapper sessionMapper;
+    private final UsersRepository usersRepository;
+
 
     @Transactional
     public SessionDto create(int userId) {
@@ -48,7 +50,6 @@ public class SessionService {
     }
 
 
-
     public SessionDto findById(UUID uuid) {
         return sessionRepository.findById(uuid)
                 .map(sessionMapper::toDto)
@@ -62,6 +63,8 @@ public class SessionService {
 //    }
 
 
+
+
     @Transactional
     public boolean delete(UUID uuid) {
         return sessionRepository.findById(uuid)
@@ -72,6 +75,7 @@ public class SessionService {
                 })
                 .orElse(false);
     }
+
 
 
     @Transactional
@@ -95,6 +99,14 @@ public class SessionService {
         cookie.setPath("/");
         response.addCookie(cookie);
         return deleted;
+    }
+
+    public SessionDto findSessionByUsername(String username) {
+        var user = usersRepository.findByUsername(username)
+                .orElseThrow(() -> new SessionException("Session was not found by username"));
+        var userId = user.getId();
+        var session = sessionRepository.findSessionByUserId(userId);
+        return sessionMapper.toDto(session);
     }
 
 }

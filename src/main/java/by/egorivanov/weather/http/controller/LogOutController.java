@@ -16,7 +16,7 @@ public class LogOutController {
 
     private final SessionService sessionService;
 
-    @PostMapping("/log-out")
+    @PostMapping("/logout")
     public String logOut(@CookieValue(value = "SESSION_ID", required = false) String sessionId,
                          HttpServletRequest request,
                          HttpServletResponse response) {
@@ -25,7 +25,8 @@ public class LogOutController {
             sessionService.invalidateSession(sessionId, response);
         }
         String referer = request.getHeader("Referer");
-        return "redirect:" +(referer != null ? referer : "home");
+        log.info("Session delete - Complete.");
+        return "redirect:/home";
     }
 
 }

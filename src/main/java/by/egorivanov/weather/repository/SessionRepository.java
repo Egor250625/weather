@@ -23,4 +23,6 @@ public interface SessionRepository extends JpaRepository<Sessions, UUID> {
     @Modifying
     @Query("DELETE FROM Sessions s WHERE s.expiresAt  < :cutoff")
     void deleteExpiredSessions(@Param("cutoff") LocalDateTime cutoff);
+
+    Sessions findSessionByUserId(int userId);
 }
