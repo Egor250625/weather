@@ -5,7 +5,6 @@ import by.egorivanov.weather.dto.response.WeatherByCoordinateResponseDto;
 import by.egorivanov.weather.service.LocationService;
 import by.egorivanov.weather.service.SessionService;
 import by.egorivanov.weather.service.UserService;
-import by.egorivanov.weather.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +21,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class HomePageController {
     private final LocationService locationService;
-    private final WeatherService weatherService;
     private final UserService userService;
     private final SessionService sessionService;
 

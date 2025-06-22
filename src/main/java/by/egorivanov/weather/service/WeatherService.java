@@ -68,9 +68,6 @@ public class WeatherService {
 
             log.info("Found {} result(s) for: {}", response.length, name);
             System.out.println("Results from OpenWeather API:");
-//            for (WeatherByNameResponseDto w : response) {
-//                System.out.println(w);
-//            }
             return Arrays.asList(response);
         } catch (RestClientException e) {
             log.error("Error fetching data from OpenWeather for name '{}': {}", name, e.getMessage(), e);

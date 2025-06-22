@@ -29,6 +29,6 @@ public class Users implements BaseEntity<Integer> {
     private String password;
 
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Locations> locations = new ArrayList<>();
 }

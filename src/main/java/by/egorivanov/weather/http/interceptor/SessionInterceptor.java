@@ -3,7 +3,6 @@ package by.egorivanov.weather.http.interceptor;
 import by.egorivanov.weather.dto.response.SessionDto;
 import by.egorivanov.weather.exception.SessionException;
 import by.egorivanov.weather.service.SessionService;
-import by.egorivanov.weather.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,7 +20,6 @@ import java.util.UUID;
 @Component
 public class SessionInterceptor implements HandlerInterceptor {
     private final SessionService sessionService;
-    private final UserService userService;
 
     private static final long SESSION_TIMEOUT_MINUTES = 30;
 
@@ -48,7 +46,7 @@ public class SessionInterceptor implements HandlerInterceptor {
                         return false;
                     }
 
-                    session.setExpiresAt(LocalDateTime.now().plusMinutes(30));
+                    session.setExpiresAt(LocalDateTime.now().plusMinutes(SESSION_TIMEOUT_MINUTES));
                     sessionService.update(session);
 
                     request.setAttribute("userId", session.getUserId());

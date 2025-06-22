@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(WrongIdException.class)
     public ModelAndView handleWrongIdException(WrongIdException ex) {
-        ModelAndView mav = new ModelAndView("error-page");
+        ModelAndView mav = new ModelAndView("error");
         mav.addObject("message", ex.getMessage());
         return mav;
     }

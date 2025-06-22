@@ -55,9 +55,4 @@ public class UserService {
                 .orElseThrow(() -> new WrongIdException("User with this Id was not found"));
     }
 
-    public boolean checkPassword(String username, String rawPassword) {
-        var userRequest = findByUsername(username);
-        return passwordEncoder.matches(rawPassword, userRequest.getPassword());
-    }
-
 }

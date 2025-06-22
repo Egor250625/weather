@@ -38,7 +38,7 @@ public class SearchController {
         List<WeatherByNameResponseDto> weather = new ArrayList<>();
 
         if (sessionId == null) {
-            return "redirect:/user/sign-in";
+            return "redirect:/sign-in";
         }
         var session = sessionService.findById(UUID.fromString(sessionId));
         var user = userService.findById(session.getUserId());
