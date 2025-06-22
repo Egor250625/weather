@@ -1,3 +1,5 @@
+--changeset egorivanov:1
+
 CREATE TABLE IF NOT EXISTS Users
 (
     ID       SERIAL PRIMARY KEY,
@@ -5,6 +7,7 @@ CREATE TABLE IF NOT EXISTS Users
     Password VARCHAR(512)        NOT NULL
 );
 
+--changeset egorivanov:2
 CREATE TABLE IF NOT EXISTS Locations
 (
     ID        SERIAL PRIMARY KEY,
@@ -14,8 +17,7 @@ CREATE TABLE IF NOT EXISTS Locations
     Longitude DOUBLE PRECISION          NOT NULL
 );
 
-
-
+--changeset egorivanov:3
 CREATE TABLE IF NOT EXISTS Sessions
 (
     ID         UUID PRIMARY KEY,

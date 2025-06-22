@@ -4,5 +4,5 @@ databaseChangeLog:
       author: egorivanov
       changes:
         - sqlFile:
-            path: db.changelog/db.changelog-1.0.sql
+            path: db/changelog/db.changelog-1.0.sql
             relativeToChangelogFile: true
